@@ -1,9 +1,7 @@
-const getExistingUser = (users, usernameOrUserId) => {
-  const existingUser = Object.values(users).find(user => {
-    return user.username === usernameOrUserId || user._id === usernameOrUserId
-  })
-
-  return existingUser
-}
+const getExistingUser = (users, usernameOrUserId) =>
+  Object.values(users).find(
+    (user) =>
+      user.username === usernameOrUserId || user._id === usernameOrUserId
+  )
 
 module.exports = getExistingUser

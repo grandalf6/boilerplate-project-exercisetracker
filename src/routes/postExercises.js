@@ -10,7 +10,7 @@ const {
   shapeUser
 } = require("../utils")
 
-const postExercises = async ({ body, params, query }, res) => {
+const postExercises = async ({ body, params }, res) => {
   const { date, duration, description, ":_id": bodyUserId } = body
   const { id } = params
 

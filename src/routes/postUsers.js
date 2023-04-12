@@ -7,7 +7,7 @@ const {
   saveElemToJson 
 } = require("../utils")
 
-const postUsers = async ({body}, res) => {
+const postUsers = async ({ body }, res) => {
   const { username } = body
   const allUsers = await getAllUsers()
   const existingUser = getExistingUser(allUsers, username)
