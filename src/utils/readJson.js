@@ -1,8 +1,11 @@
 const fs = require("fs")
+const path = require('path')
 
-const readJson = async (path) =>
+const readJson = async (storagePath) =>
   await new Promise((resolve) => {
-    fs.readFile(path, (err, data) => {
+    const fullPath = path.join(__dirname, '', storagePath)
+    
+    fs.readFile(fullPath, (err, data) => {
       if (err) {
         console.log(err)
       } else {
