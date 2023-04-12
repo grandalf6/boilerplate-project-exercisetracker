@@ -1,5 +1,9 @@
+const path = require("path")
+
 const getHome = (_, res) => {
-  res.sendFile("/src/views/index.html")
+  const pagePath = path.join(__dirname, "..", "views", "index.html")
+
+  res.sendFile(pagePath)
 }
 
 module.exports = getHome
