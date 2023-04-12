@@ -1,5 +1,5 @@
 const getHome = (_, res) => {
-  res.sendFile(__dirname + "/views/index.html")
+  res.sendFile("/src/views/index.html")
 }
 
 module.exports = getHome

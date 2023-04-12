@@ -1,4 +1,5 @@
-const { readJson } = require("./utils")
+const { USERS_JSON_PATH } = require('../config')
+const { readJson } = require("../utils")
 
 const getUsers = async (_, res) => {
   const users = await readJson(USERS_JSON_PATH)

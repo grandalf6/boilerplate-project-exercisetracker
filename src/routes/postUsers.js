@@ -1,3 +1,4 @@
+const { USERS_JSON_PATH } = require('../config')
 const { saveElemToJson } = require("../utils")
 
 const postUsers = async (req, res) => {

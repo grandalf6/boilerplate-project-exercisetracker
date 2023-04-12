@@ -1,5 +1,6 @@
 const dateFns = require("date-fns")
-const { readJson, saveElemToJson, shapeUser } = require("./utils")
+const { EXERCISES_JSON_PATH } = require('../config')
+const { readJson, saveElemToJson, shapeUser } = require("../utils")
 
 const postExercises = async ({ body, params, query }, res) => {
   const { date, duration, description, ":_id": userId } = body
