@@ -1,4 +1,6 @@
-const { EXERCISES_JSON_PATH } = require("../config")
+const { 
+  EXERCISES_JSON_PATH 
+} = require("../config")
 const readJson = require("./readJson")
 
 const getUserExercises = async (userId) => {

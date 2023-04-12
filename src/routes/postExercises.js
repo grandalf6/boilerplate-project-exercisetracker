@@ -1,44 +1,50 @@
-const dateFns = require("date-fns")
-const { EXERCISES_JSON_PATH } = require('../config')
-const { readJson, saveElemToJson, shapeUser } = require("../utils")
+const {
+  EXERCISES_JSON_PATH
+} = require('../config')
+const {
+  formatDate,
+  getAllUsers,
+  getError,
+  getExistingUser,
+  saveElemToJson,
+  shapeUser
+} = require("../utils")
 
 const postExercises = async ({ body, params, query }, res) => {
-  const { date, duration, description, ":_id": userId } = body
-  console.log(body, params, query)
+  const { date, duration, description, ":_id": bodyUserId } = body
+  const { id } = params
 
   // FIND USER
-  const users = await readJson(USERS_JSON_PATH)
-  const username = users[userId]
-  if (!username) {
-    res.json({
-      error: "invalid user",
-    })
+  const userId = bodyUserId || id
+  const allUsers = await getAllUsers()
+  const existingUser = getExistingUser(allUsers, userId)
+  if (!existingUser) {
+    const error = getError('INVALID_USER')
+    res.json(error)
     return
   }
 
   // DATE
-  const usedDate = date || new Date()
-  const formattedDate = dateFns.format(usedDate, "EEE MMM dd yyyy")
-
-  // DURATION
-  const durationParsed = parseInt(duration)
+  const parsedDate = new Date(date || null)
 
   // ADD EXERCISE
   const exercise = {
-    date: formattedDate,
     description,
-    duration: durationParsed,
+    timestamp: parsedDate.getTime(),
+    duration: parseInt(duration),
   }
-  const user = shapeUser(userId, username)
+  const user = shapeUser(userId, existingUser.username)
   const exerciseRecord = {
     ...exercise,
     userId,
   }
+
   await saveElemToJson(exerciseRecord, EXERCISES_JSON_PATH)
 
   res.json({
     ...exercise,
     ...user,
+    date: formatDate(parsedDate)
   })
 }
 

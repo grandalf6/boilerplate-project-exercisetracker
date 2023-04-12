@@ -1,4 +1,6 @@
-const { USERS_JSON_PATH } = require("../config")
+const {
+  USERS_JSON_PATH
+} = require("../config")
 const readJson = require("./readJson")
 const shapeUser = require("./shapeUser")
 

@@ -10,7 +10,7 @@ const readJson = async (storagePath) =>
         console.log(err)
       } else {
         const parsedData = JSON.parse(data)
-
+        
         resolve(parsedData)
       }
     })

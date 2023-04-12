@@ -5,7 +5,6 @@ const path = require('path')
 const saveElemToJson = async (elem, storagePath) =>
   await new Promise((resolve) => {
     const fullPath = path.join(__dirname, '', storagePath)
-    console.log(fullPath)
     
     fs.readFile(fullPath, (err, data) => {
       if (err) {
