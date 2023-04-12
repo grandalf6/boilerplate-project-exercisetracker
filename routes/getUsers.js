@@ -1,8 +1,10 @@
-const { readJson } = require('./utils')
+const { readJson } = require("./utils")
 
-const getUsers = async (req, res) => {
+const getUsers = async (_, res) => {
   const users = await readJson(USERS_JSON_PATH)
-  const usersArray = Object.entries(users).map(([_id, username]) => shapeUser(_id, username))
+  const usersArray = Object.entries(users).map(([_id, username]) =>
+    shapeUser(_id, username)
+  )
 
   res.json(usersArray)
 }

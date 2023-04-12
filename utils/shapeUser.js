@@ -1,6 +1,6 @@
 const shapeUser = (_id, username) => ({
   username,
-  _id
+  _id,
 })
 
 module.exports = shapeUser

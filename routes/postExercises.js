@@ -1,8 +1,8 @@
-const dateFns = require('date-fns')
-const { readJson, saveElemToJson, shapeUser } = require('./utils')
+const dateFns = require("date-fns")
+const { readJson, saveElemToJson, shapeUser } = require("./utils")
 
 const postExercises = async ({ body, params, query }, res) => {
-  const { date, duration, description, ':_id': userId } = body
+  const { date, duration, description, ":_id": userId } = body
   console.log(body, params, query)
 
   // FIND USER
@@ -10,14 +10,14 @@ const postExercises = async ({ body, params, query }, res) => {
   const username = users[userId]
   if (!username) {
     res.json({
-      error: 'invalid user'
+      error: "invalid user",
     })
     return
   }
 
   // DATE
   const usedDate = date || new Date()
-  const formattedDate = dateFns.format(usedDate, 'EEE MMM dd yyyy')
+  const formattedDate = dateFns.format(usedDate, "EEE MMM dd yyyy")
 
   // DURATION
   const durationParsed = parseInt(duration)
@@ -26,18 +26,18 @@ const postExercises = async ({ body, params, query }, res) => {
   const exercise = {
     date: formattedDate,
     description,
-    duration: durationParsed
+    duration: durationParsed,
   }
   const user = shapeUser(userId, username)
   const exerciseRecord = {
     ...exercise,
-    userId
+    userId,
   }
   await saveElemToJson(exerciseRecord, EXERCISES_JSON_PATH)
 
   res.json({
     ...exercise,
-    ...user
+    ...user,
   })
 }
 

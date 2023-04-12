@@ -1,12 +1,11 @@
-const saveElemToJson = require('./saveElemToJson')
-const readJson = require('./readJson')
-const shapeUser = require('./shapeUser')
-const getUserExercises = require('./getUserExercises')
-
+const getUserExercises = require("./getUserExercises")
+const readJson = require("./readJson")
+const saveElemToJson = require("./saveElemToJson")
+const shapeUser = require("./shapeUser")
 
 module.exports = {
-  saveElemToJson,
+  getUserExercises,
   readJson,
+  saveElemToJson,
   shapeUser,
-  getUserExercises
 }

@@ -1,4 +1,4 @@
-const { getUserExercises } = require('./utils')
+const { getUserExercises } = require("./utils")
 
 const getExercises = async (req, res) => {
   const userId = req.params.id

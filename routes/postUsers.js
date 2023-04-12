@@ -1,4 +1,4 @@
-const { saveElemToJson } = require('../utils')
+const { saveElemToJson } = require("../utils")
 
 const postUsers = async (req, res) => {
   const username = req.body.username
@@ -6,9 +6,8 @@ const postUsers = async (req, res) => {
 
   res.json({
     username,
-    _id: userId
+    _id: userId,
   })
-
 }
 
 module.exports = postUsers
